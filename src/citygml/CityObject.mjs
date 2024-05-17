@@ -24,6 +24,10 @@ class CityObject {
     return this.getEnvelope().getBoundingBox().getCenter()
   }
 
+  get id() {
+    return this.cityNode.getAttribute('gml:id')
+  }
+
   /**
    * @returns {TriangleMesh}
    */
