@@ -23,6 +23,9 @@ export class Converter {
       tilingScheme: {
         tileResolution: 1,
       },
+      coordinateTransform: {
+        snapToGround: false,
+      }
     }, options)
   }
 
@@ -37,7 +40,7 @@ export class Converter {
     let cityObjects = [], boundingBoxes = []
     inputPaths.forEach((inputPath, i) => {
       console.debug(`Reading CityGML file ${i + 1}/${inputPaths.length}...`)
-      let cityDocument = CityDocument.fromFile(inputPath, srsTranslator)
+      let cityDocument = CityDocument.fromFile(inputPath, srsTranslator, this.options.coordinateTransform)
       let cityModel = cityDocument.getCityModel()
       let objs = cityModel.getCityObjects()
       console.debug(` Found ${objs.length} city objects.`)
